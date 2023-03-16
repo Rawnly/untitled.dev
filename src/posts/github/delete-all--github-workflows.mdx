@@ -1,0 +1,39 @@
+---
+title: Delete all workflows on github-actions
+tags: github, workflows, github-actions, git, script
+summary: Sometimes you just want to delete all github workflows
+date: 2023-03-14
+---
+
+Sometimes it happens that we run CI multiple times and it fails every time.
+If you want to delte ie 15 runs, Github wants you to do it manually.
+
+Below a script to automate the process via the Github API and `gh-cli`
+
+```sh
+#!/usr/bin/env bash
+
+# This script deletes all GitHub Actions runs for the current repository.
+# It is useful for cleaning up the Actions tab after a large number of runs have been created.
+
+# use --limit to describe how many runs delete
+# use -w <workflow> to specify which workflow
+remove_gh_runs() {
+	runs=$(gh run list --limit 300 --json databaseId -q '.[].databaseId')
+	if [[ -z $runs ]]; then
+		echo "No runs found."
+		exit
+	fi
+
+	total_runs=$(echo "$runs" | wc -l)
+	completed_runs=0
+
+	for run_id in $runs; do
+		((completed_runs++))
+		printf "\rDeleting run %d/%d with ID %s..." "$completed_runs" "$total_runs" "$run_id"
+		gh api "repos/$(gh repo view --json nameWithOwner -q .nameWithOwner)/actions/runs/$run_id" -X DELETE --silent
+	done
+
+	printf "\n"
+}
+```
