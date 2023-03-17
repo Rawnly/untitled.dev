@@ -48,20 +48,22 @@ export default function Layout(p: any) {
 
   return (
     <>
-      <nav className="sticky flex items-center justify-start gap-4 py-4 px-8 top-0">
-        <Link href="/">
-          <h1 className="-mb-1.5">TIL</h1>
-          <small>by Federico Vitale</small>
-        </Link>
+      <nav className="sticky navbar z-[9999] backdrop-blur flex items-center justify-start gap-4 py-4 px-8 top-0">
+        <div className="aboslute inset-0 z-50">
+          <Link href="/">
+            <h1 className="-mb-1.5">TIL</h1>
+            <small>by Federico Vitale</small>
+          </Link>
+        </div>
       </nav>
-      <div className="flex flex-col py-24 gap-8 px-12">
-        <header className="w-full flex flex-col gap-2 text-center mb-16">
+      <div className="flex flex-col py-24 gap-8 px-4 md:px-12">
+        <header className="w-full flex flex-col gap-2 text-center mb-8 sm:mb-16">
           <h1 className="md:text-5xl lg:text-6xl">{post.title}</h1>
           <p className="md:text-xl lg:text-2xl">{post.summary}</p>
-          <div className="flex mt-4 text-sm inline-flex gap-4 mx-auto">
+          <div className="flex mt-4 text-sm flex-wrap justify-center items-center gap-4 mx-auto max-sm:text-xs">
             {post.tagsList.map((tag: string) => (
               <Link
-                className="rounded transition-all opacity-25 hover:opacity-100 cursor-pointer px-4 py-2 hover:rx-bg-neutral-2"
+                className="rounded transition-all opacity-25 hover:opacity-100 cursor-pointer px-2 sm:px-4 py-2 hover:rx-bg-neutral-2"
                 key={tag}
                 href={`/?tag=${tag}`}
               >

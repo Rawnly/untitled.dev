@@ -9,7 +9,7 @@ const variants = tv({
   ],
 });
 
-export function CodeBlock({
+export default function CodeBlock({
   className,
   children,
   ref: _ref,

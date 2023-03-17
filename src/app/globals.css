@@ -60,9 +60,17 @@ p a:hover {
   @apply underline;
 }
 
+pre code {
+  padding: 0 !important;
+}
+
 hr {
   @apply my-4;
   @apply rx-border-neutral-8;
+}
+
+[data-rehype-pretty-code-fragment] {
+  @apply mt-4 text-sm;
 }
 
 body[data-focus-mode="true"] .focusable-row {
@@ -73,4 +81,23 @@ body[data-focus-mode="true"] .focusable-row {
 body[data-focus-mode="true"] .focusable-row:hover {
   @apply rx-text-neutral-12;
   opacity: 1;
+}
+
+.navbar::before {
+  backdrop-filter: blur(12px);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.navbar::after,
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: -1px 0px -50%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.line--highlighted,
+.word {
+  @apply rx-bg-neutral-6 w-full;
 }

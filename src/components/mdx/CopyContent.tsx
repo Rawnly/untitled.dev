@@ -6,10 +6,11 @@ import { tv } from "tailwind-variants";
 
 const variants = tv({
   base: [
-    "absolute z-50 opacity-0 top-5 right-5",
+    "absolute z-50 opacity-0 top-2.5 right-2.5",
     "duration-250 px-4 py-2.5 rounded transition-all",
     "group-hover:opacity-100",
     "hover:rx-bg-neutral-4 active:rx-bg-neutral-5 active:scale-[.96]",
+    "max-sm:hidden",
   ],
 });
 

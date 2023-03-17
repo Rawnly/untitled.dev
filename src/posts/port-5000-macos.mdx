@@ -5,6 +5,6 @@ summary: Port 5000 busy? No problem.
 date: 2023-03-12
 ---
 
-By running `portPid 5000` (aliased to `lsof -i :5000`), I found that the process that was using that port was macOS Control Centre.
+By running `portPid 5000{:sh}` (aliased to `lsof -i :5000{:sh}`), I found that the process that was using that port was macOS Control Centre.
 
 This is due to the option `airplay receiver` checked in the macOS Settings

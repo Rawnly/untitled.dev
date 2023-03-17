@@ -6,7 +6,7 @@ import {
 
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
-import rehypePrettyCode from "rehype-pretty-code";
+import rehypePrettyCode, { Options } from "rehype-pretty-code";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const computedFields: ComputedFields = {
@@ -80,7 +80,7 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "one-dark-pro",
+          theme: "vitesse-dark",
           onVisitLine: (node: any) => {
             if (node.children.length === 0) {
               node.children = [
@@ -94,10 +94,25 @@ export default makeSource({
           onVisitHighlightedLine: (node: any) => {
             node.properties.className.push("line--highlighted");
           },
-          onVisitHighlightedWord: (node: any) => {
-            node.properties.className.push("word--highlighted");
+          onVisitHighlightedWord: (node, id?: string) => {
+            node.properties.className = ["word"];
+            // if (id) {
+            //   const className = {
+            //     v: "rx-bg-red-3 rx-text-red-12",
+            //     s: "rx-bg-green-3 rx-text-green-12",
+            //     i: "rx-bg-blue-4 rx-text-blue-12",
+            //   }[id];
+            //
+            //   if (node.properties["data-rehype-pretty-code-wrapper"]) {
+            //     node.children.forEach((n: any) => {
+            //       n.properties.className.push(className);
+            //     });
+            //   }
+            // }
+
+            // node.properties.className.push("word--highlighted");
           },
-        },
+        } as Options,
       ],
       [
         rehypeAutolinkHeadings,

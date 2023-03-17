@@ -21,7 +21,7 @@ export default function Suggestions({ post }: Props) {
   return (
     <div>
       <h1 className="mb-4 text-base opacity-50">You might also like:</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-x-scroll">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 overflow-x-scroll">
         {posts?.map((post) => (
           <Link
             href={post.slug}

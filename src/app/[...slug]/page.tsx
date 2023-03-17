@@ -2,18 +2,13 @@ import { allPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { findPost } from "./utils";
-import clsx from "clsx";
-import { CodeBlock } from "@/components/mdx/CodeBlock";
+import * as mdxComponents from "@/components/mdx";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
     slug: post.slug,
   }));
 }
-
-const Paragraph = ({ className, ...props }: any) => (
-  <p {...props} className={clsx(className, "focusable-row")} />
-);
 
 export default function PostPage({
   params,
@@ -26,11 +21,12 @@ export default function PostPage({
     return notFound();
   }
 
-  const Component = useMDXComponent(post.body.code);
+  // eslint-disable-next-line
+  const Component = useMDXComponent(post!.body.code);
 
   return (
     <main>
-      <Component components={{ p: Paragraph, pre: CodeBlock }} />
+      <Component components={mdxComponents} />
       {process.env.NODE_ENV === "production" && (
         <script type="application/ld+json">
           {JSON.stringify(post.structuredData)}
