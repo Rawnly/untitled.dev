@@ -18,6 +18,7 @@ export default function PostPage({
   const post = allPosts.find(findPost(params.slug));
 
   if (!post) {
+    console.log("Post not found");
     return notFound();
   }
 
@@ -25,8 +26,8 @@ export default function PostPage({
   const Component = useMDXComponent(post!.body.code);
 
   return (
-    <main>
-      <Component components={mdxComponents} />
+    <main id="post-content">
+      <Component components={{ ...mdxComponents }} />
       {process.env.NODE_ENV === "production" && (
         <script type="application/ld+json">
           {JSON.stringify(post.structuredData)}

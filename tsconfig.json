@@ -40,7 +40,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated",
-    "src/posts/github/github-delete-deployments.mdx"
+    "src/posts/github/delete-all-deployments.mdx",
+    "src/posts/git-diff-against-last-commit.mdxipgrep.mdx"
   ],
   "exclude": [
     "node_modules"

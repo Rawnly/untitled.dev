@@ -34,6 +34,18 @@ h6 {
   @apply text-base font-medium rx-text-neutral-12;
 }
 
+#post-content h1 {
+  @apply my-4;
+}
+
+#post-content h2 {
+  @apply my-3;
+}
+
+#post-content h3 {
+  @apply my-2;
+}
+
 /* Paragraph */
 p {
   @apply text-base leading-relaxed;

@@ -17,34 +17,32 @@ const makeUrl = (
   url: string,
   params: Record<string, string | string[] | undefined | null>
 ): string => {
-  const p = Object.entries(params).reduce((acc, [key, value]) => {
-    if (!value) return acc;
+  const searchParams = new URLSearchParams();
 
-    if (Array.isArray(value)) {
-      return {
-        ...acc,
-        [key]: value.join(","),
-      };
+  for (const [k, v] of Object.entries(params)) {
+    if (!v) continue;
+
+    if (Array.isArray(v)) {
+      for (const i of v) {
+        searchParams.append(k, i);
+      }
+
+      continue;
     }
 
-    return {
-      ...acc,
-      [key]: value,
-    };
-  }, {} as Record<string, string>);
-
-  const searchParams = new URLSearchParams(p);
+    searchParams.set(k, v);
+  }
 
   return `${url}?${searchParams.toString()}`;
 };
 
 export default function PostsList({ posts = [], ...props }: Props) {
   const p = useSearchParams();
-  const tags = props.tags ?? p.get("tag");
+  const tag = props.tags ?? p.getAll("tag");
   const q = props.search ?? p.get("search");
 
   const { data: response } = useSWR(
-    [{ tags, q }, "/api/search"],
+    [{ tag, q }, "/api/search"],
     ([p, url]) =>
       fetch(makeUrl(url, p)).then(
         (r) => r.json() as Promise<SearchResponse<Post>>
@@ -60,7 +58,11 @@ export default function PostsList({ posts = [], ...props }: Props) {
   return (
     <ul className="flex flex-col gap-4">
       {response.data.map((post) => (
-        <Link href={post.slug} key={post.slug}>
+        <Link
+          href={post.slug}
+          className="active:scale-[.98] transition-all duration-150"
+          key={post.slug}
+        >
           <li className="rounded flex items-center gap-4 justify-start hover:rx-bg-neutral-2 px-4 py-2">
             <div className="flex-1">
               <h3 className="text-xl mb-1 sm:text-2xl">{post.title}</h3>

@@ -63,6 +63,9 @@ const Post = defineDocumentType(() => ({
       type: "date",
       required: true,
     },
+    origin: {
+      type: "string",
+    },
     image: {
       type: "string",
     },
@@ -96,19 +99,20 @@ export default makeSource({
           },
           onVisitHighlightedWord: (node, id?: string) => {
             node.properties.className = ["word"];
-            // if (id) {
-            //   const className = {
-            //     v: "rx-bg-red-3 rx-text-red-12",
-            //     s: "rx-bg-green-3 rx-text-green-12",
-            //     i: "rx-bg-blue-4 rx-text-blue-12",
-            //   }[id];
-            //
-            //   if (node.properties["data-rehype-pretty-code-wrapper"]) {
-            //     node.children.forEach((n: any) => {
-            //       n.properties.className.push(className);
-            //     });
-            //   }
-            // }
+
+            if (id) {
+              const className = {
+                v: "rx-bg-red-3 rx-text-red-12",
+                s: "rx-bg-green-3 rx-text-green-12",
+                i: "rx-bg-blue-4 rx-text-blue-12",
+              }[id];
+
+              if (node.properties["data-rehype-pretty-code-wrapper"]) {
+                node.children.forEach((n: any) => {
+                  n.properties.className.push(className);
+                });
+              }
+            }
 
             // node.properties.className.push("word--highlighted");
           },
