@@ -6,6 +6,7 @@ import Suggestions from "./Suggestions";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import Balancer from "react-wrap-balancer";
+import { format } from "date-fns";
 
 export async function generateMetadata({
   params,
@@ -49,6 +50,8 @@ export default function Layout(p: any) {
 
   if (!post) notFound();
 
+  const date = format(new Date(post.date), "MMMM do, yyyy");
+
   return (
     <>
       <nav className="sticky navbar z-[9999] backdrop-blur flex items-center justify-start gap-4 py-4 px-8 top-0">
@@ -61,6 +64,7 @@ export default function Layout(p: any) {
       </nav>
       <div className="flex flex-col py-24 gap-8 px-4 md:px-12">
         <header className="w-full flex flex-col gap-2 text-center mb-8 sm:mb-16">
+          <small>{date}</small>
           <h1 className="md:text-5xl lg:text-6xl">
             <Balancer>{post.title}</Balancer>
           </h1>
