@@ -102,8 +102,22 @@ body[data-focus-mode="true"] .focusable-row:hover {
 }
 
 .navbar::before {
+  --size: 6px;
+  --to: 60%;
+
   backdrop-filter: blur(12px);
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  mask-image: linear-gradient(to bottom, black var(--to), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black var(--to), transparent);
+
+  background-color: transparent;
+  background-size: var(--size) var(--size);
+  background-image: radial-gradient(rgba(0, 0, 0, 0) 2px, rgb(251 252 253) 1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbar::before {
+    background-image: radial-gradient(rgba(0, 0, 0, 0) 2px, rgb(21 23 24) 1px);
+  }
 }
 
 .navbar::after,
