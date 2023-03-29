@@ -21,8 +21,8 @@ export async function generateMetadata({
 
   const { title, date, summary: description, image, slug } = post;
   const ogImage = image
-    ? `https://fedevitale.dev/${image}`
-    : `https://fedevitale.dev/api/og?slug=${slug}`;
+    ? `https://untitled.dev/${image}`.replace(/\/\//g, "/")
+    : `https://untitled.dev/api/og?slug=${slug}`;
 
   return {
     title,
