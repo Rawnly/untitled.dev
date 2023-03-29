@@ -12,13 +12,13 @@ So by playing around I discovered that the popover injects the `--radix-ui-popov
 
 To fix this I just had to add the following css to my popover content:
 
-```css
+```css title="standard CSS" /--radix-popover-trigger-width/
 .combobox-popover {
   width: var(--radix-popover-trigger-width);
 }
 ```
 
-```tsx
+```tsx title="with tailwind" /--radix-popover-trigger-width/
 import * as Popover from '@radix-ui/react-popover';
 
 // later in your code 
@@ -34,6 +34,7 @@ import * as Popover from '@radix-ui/react-popover';
       <li>Item 3</li>
     </ul>
   </Popover.Content>
+</Popover.Root>
 ```
 
 Just that! Super simple and easy to fix.
