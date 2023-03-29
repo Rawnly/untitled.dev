@@ -4,6 +4,12 @@
 
 @import "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css";
 
+*::selection {
+  /* @apply dark:bg-grassDark-10 dark:text-neutralDark-1; */
+  /* @apply rx-bg-green-6 rx-text-green-11; */
+  @apply rx-bg-grass-6 rx-text-grass-11;
+}
+
 /* Base font family */
 body {
   @apply font-sans;
@@ -32,6 +38,18 @@ h5 {
 
 h6 {
   @apply text-base font-medium rx-text-neutral-12;
+}
+
+#post-content h1 {
+  @apply my-4;
+}
+
+#post-content h2 {
+  @apply my-3;
+}
+
+#post-content h3 {
+  @apply my-2;
 }
 
 /* Paragraph */
@@ -84,8 +102,22 @@ body[data-focus-mode="true"] .focusable-row:hover {
 }
 
 .navbar::before {
+  --size: 6px;
+  --to: 60%;
+
   backdrop-filter: blur(12px);
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  mask-image: linear-gradient(to bottom, black var(--to), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black var(--to), transparent);
+
+  background-color: transparent;
+  background-size: var(--size) var(--size);
+  background-image: radial-gradient(rgba(0, 0, 0, 0) 2px, rgb(251 252 253) 1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbar::before {
+    background-image: radial-gradient(rgba(0, 0, 0, 0) 2px, rgb(21 23 24) 1px);
+  }
 }
 
 .navbar::after,

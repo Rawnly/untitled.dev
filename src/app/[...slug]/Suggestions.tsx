@@ -1,8 +1,9 @@
 "use client";
 
+import clsx from "clsx";
 import type { Post } from "contentlayer/generated";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import Balancer from "react-wrap-balancer";
 import useSWR from "swr";
 
 interface Props {
@@ -21,15 +22,32 @@ export default function Suggestions({ post }: Props) {
   return (
     <div>
       <h1 className="mb-4 text-base opacity-50">You might also like:</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 overflow-x-scroll">
-        {posts?.map((post) => (
+      <div
+        className={clsx(
+          "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 overflow-x-scroll",
+          {
+            "xl:grid-cols-1": posts.length === 1,
+            "xl:grid-cols-2": posts.length === 2,
+          }
+        )}
+      >
+        {posts?.map((post, idx) => (
           <Link
             href={post.slug}
-            className="px-4 py-2 rounded hover:rx-bg-neutral-2 transition-colors"
+            className={clsx(
+              "px-4 py-2 rounded hover:rx-bg-neutral-2 transition-colors",
+              {
+                "xl:col-span-1 md:col-span-2": idx === 2,
+              }
+            )}
             key={post.slug}
           >
-            <h3 className="text-lg">{post.title}</h3>
-            <p className="text-sm">{post.summary}</p>
+            <h3 className="text-lg">
+              <Balancer>{post.title}</Balancer>
+            </h3>
+            <p className="text-sm">
+              <Balancer>{post.summary}</Balancer>
+            </p>
           </Link>
         ))}
       </div>
