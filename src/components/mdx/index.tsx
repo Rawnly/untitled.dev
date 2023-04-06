@@ -22,7 +22,7 @@ export const a = ({
 );
 
 const ulVariants = tv({
-  base: "pl-4 list-disc space-y-1",
+  base: "pl-4 my-4 list-disc space-y-2",
 });
 
 export const ul = ({
