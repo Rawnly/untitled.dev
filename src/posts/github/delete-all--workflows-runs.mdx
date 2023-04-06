@@ -1,12 +1,12 @@
 ---
-title: Delete all workflows on github
+title: "Github Actions: Delete all workflows runs"
 tags: github, workflows, github-actions, git, script
-summary: Sometimes you just want to delete all github workflows
+summary: "Deleting all workflows can be such a pain to do manually."
 date: 2023-03-14
 ---
 
-Sometimes it happens that we run CI multiple times and it fails every time.
-If you want to delete `<n>` runs, Github wants you to do it manually.
+Github doesn't let us delete all workflows just with a few clicks. Instead we have to manually delete 
+all the runs in order to remove an old workflow. 
 
 Below a script to automate the process via the Github API and `gh-cli`
 
