@@ -1,12 +1,11 @@
 "use client";
-import { format, isToday, isThisYear, differenceInHours } from "date-fns";
 
 import type { Post } from "contentlayer/generated";
 import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import { SearchResponse } from "./api/search/type";
-import Link from "next/link";
 import PostListItem from "@/components/PostListItem";
+import { sortPosts } from "@/lib/util";
 
 interface Props {
   posts: Post[];
@@ -50,7 +49,7 @@ export default function PostsList({ posts = [], ...props }: Props) {
       ),
     {
       fallbackData: {
-        data: posts,
+        data: sortPosts(posts),
         count: posts.length,
       },
     }

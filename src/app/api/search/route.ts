@@ -1,6 +1,6 @@
 import { allPosts } from "contentlayer/generated";
 import { NextRequest, NextResponse } from "next/server";
-import compare from "date-fns/compareDesc";
+import { sortPosts } from "@/lib/util";
 
 export async function GET(request: NextRequest) {
   const tags = request.nextUrl.searchParams.getAll("tag");
@@ -23,11 +23,10 @@ export async function GET(request: NextRequest) {
       }
 
       return true;
-    })
-    .sort((a, b) => compare(new Date(a.date), new Date(b.date)));
+    });
 
   return NextResponse.json({
-    data: posts,
+    data: sortPosts(posts),
     count: posts.length,
   });
 }
