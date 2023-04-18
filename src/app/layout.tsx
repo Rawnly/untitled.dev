@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "TIL | by Federico Vitale",
@@ -13,36 +14,36 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="rx-bg-neutral-1 rx-text-neutral-11 min-h-screen w-screen">
-        <div className="max-w-6xl min-h-screen mx-auto px-2 sm:px-4 text-base">
+      <body className="w-screen min-h-screen rx-bg-neutral-1 rx-text-neutral-11">
+        <div className="px-2 mx-auto max-w-6xl min-h-screen text-base sm:px-4">
           {children}
         </div>
         <footer>
-          <div className="mx-auto max-w-7xl overflow-hidden py-10 px-6 sm:py-8 lg:px-8">
-            <div className="mb-10 flex justify-center space-x-10">
+          <div className="overflow-hidden py-10 px-6 mx-auto max-w-7xl sm:py-8 lg:px-8">
+            <div className="flex justify-center mb-10 space-x-10">
               {navigation.social.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="hover:opacity-50 transition-all"
+                  className="transition-all hover:opacity-50"
                 >
                   <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                  <item.icon className="w-6 h-6" aria-hidden="true" />
                 </Link>
               ))}
             </div>
-            <p className="mb-10 text-center text-xs leading-5 text-gray-500">
+            <p className="mb-10 text-xs leading-5 text-center text-gray-500">
               &copy; 2023 Federico Vitale. All rights reserved.
             </p>
             <nav
-              className="-mt-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
+              className="-mt-6 sm:flex sm:justify-center sm:space-x-12 columns-2"
               aria-label="Footer"
             >
               {navigation.main.map((item) => (
                 <div key={item.name} className="pb-6">
                   <Link
                     href={item.href}
-                    className="text-sm leading-6 hover:opacity-80 transition-all hover:underline"
+                    className="text-sm leading-6 transition-all hover:underline hover:opacity-80"
                   >
                     {item.name}
                   </Link>
@@ -51,6 +52,7 @@ export default function RootLayout({
             </nav>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
