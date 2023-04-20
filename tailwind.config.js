@@ -7,6 +7,7 @@ const {
 const palette = {
   ...radixColors,
   ...createAlias("neutral", "slate"),
+  ...createAlias("primary", "cyan"),
 };
 
 /** @type {import('tailwindcss').Config} */

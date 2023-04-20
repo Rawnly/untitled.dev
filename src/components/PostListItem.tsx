@@ -18,11 +18,11 @@ const PostListItem: FC<PropsWithChildren<IPostListItemProps>> = ({ post }) => {
   return (
     <Link
       href={post.slug}
-      className="active:scale-[.98] transition-all duration-150"
+      className="transition-all duration-150 active:scale-[.98]"
     >
-      <li className="rounded flex items-center gap-4 justify-start hover:rx-bg-neutral-2 px-4 py-2">
+      <li className="flex gap-4 justify-start items-center py-2 px-4 rounded hover:rx-bg-neutral-2">
         <div className="flex-1">
-          <h3 className="text-xl mb-1 sm:text-2xl">{post.title}</h3>
+          <h3 className="mb-1 text-xl font-medium sm:text-2xl">{post.title}</h3>
           <p className="text-sm sm:text-base">{post.summary}</p>
         </div>
         {is_today ? (
@@ -33,7 +33,7 @@ const PostListItem: FC<PropsWithChildren<IPostListItemProps>> = ({ post }) => {
           </small>
         ) : (
           <>
-            <small className="md:hidden text-sm text-center opacity-50 min-w-[50px]">
+            <small className="text-sm text-center opacity-50 md:hidden min-w-[50px]">
               {!is_this_year && (
                 <>
                   {format(date, "yyyy")} <br />
@@ -41,7 +41,7 @@ const PostListItem: FC<PropsWithChildren<IPostListItemProps>> = ({ post }) => {
               )}
               {format(date, "MMM do")}
             </small>
-            <small className="ml-auto hidden md:block opacity-50">
+            <small className="hidden ml-auto opacity-50 md:block">
               {format(date, is_this_year ? "MMMM do" : "MMMM do, yyyy")}
             </small>
           </>
