@@ -57,7 +57,7 @@ export default function Layout(p: any) {
       <nav className="flex sticky top-0 gap-4 justify-start items-center py-4 px-8 navbar z-[9999]">
         <div className="inset-0 z-50 aboslute">
           <Link href="/" className="hover:opacity-50 active:opacity-25">
-            <h1 className="-mb-1.5 text-2xl">untitled.dev</h1>
+            <h1 className="-mb-1.5 text-2xl font-bold">untitled.dev</h1>
             <small className="text-xs">by Federico Vitale</small>
           </Link>
         </div>
@@ -65,7 +65,7 @@ export default function Layout(p: any) {
       <div className="flex flex-col gap-8 py-24 px-4 md:px-12">
         <header className="flex flex-col gap-2 mb-8 w-full text-center sm:mb-16">
           <small>{date}</small>
-          <h1 className="md:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl rx-text-neutral-12">
             <Balancer>{post.title}</Balancer>
           </h1>
           <p className="mx-auto md:text-xl lg:text-2xl max-w-[600px]">

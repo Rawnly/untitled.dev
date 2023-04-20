@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "TIL | by Federico Vitale",
-  description: "Today I Learned",
+  description: "Today I learned...",
 };
 
 export default function RootLayout({
