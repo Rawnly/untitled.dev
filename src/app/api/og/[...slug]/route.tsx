@@ -67,7 +67,8 @@ export function GET(
       </div>
     ),
     {
-      debug: true,
+      debug: process.env.NODE_ENV !== "production",
+      fonts: [],
     }
   );
 }
