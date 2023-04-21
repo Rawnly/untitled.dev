@@ -1,7 +1,6 @@
-import { ImageResponse } from "@vercel/og";
 import { findPost } from "@/app/[...slug]/utils";
 import { allPosts } from "contentlayer/generated";
-import { NextRequest } from "next/server";
+import { NextRequest, ImageResponse } from "next/server";
 
 type P = {
   params: {
