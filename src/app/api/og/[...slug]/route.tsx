@@ -42,17 +42,30 @@ export function GET(_request: NextRequest, { params = {} }: P) {
             gap: 16,
           }}
         >
-          <div
+          <img
+            width="256"
+            height="256"
+            src={`https://github.com/rawnly.png`}
+            alt="rawnly"
             style={{
+              borderRadius: 128,
               width: 100,
               height: 100,
-              borderRadius: "100%",
-              background: "currentColor",
-              backgroundImage: "url(https://unavatar.io/github/rawnly)",
-              backgroundSize: "100% 100%",
               border: "2px solid currentColor",
             }}
           />
+
+          {/* <div */}
+          {/*   style={{ */}
+          {/*     width: 100, */}
+          {/*     height: 100, */}
+          {/*     borderRadius: "100%", */}
+          {/*     background: "currentColor", */}
+          {/*     backgroundImage: "url(https://unavatar.io/github/rawnly)", */}
+          {/*     backgroundSize: "100% 100%", */}
+          {/*     border: "2px solid currentColor", */}
+          {/*   }} */}
+          {/* /> */}
           <ul
             style={{
               display: "flex",
