@@ -3,15 +3,14 @@ import { findPost } from "@/app/[...slug]/utils";
 import { allPosts } from "contentlayer/generated";
 import { NextRequest } from "next/server";
 
-export function GET(
-  _request: NextRequest,
-  {
-    params: { slug },
-  }: {
-    params: Record<string, string | string[]>;
-  }
-) {
-  const post = allPosts.find(findPost(slug));
+type P = {
+  params: {
+    [k: string]: string | string[];
+  };
+};
+
+export function GET(_request: NextRequest, { params = {} }: P) {
+  const post = allPosts.find(findPost(params.slug));
 
   return new ImageResponse(
     (
@@ -68,7 +67,6 @@ export function GET(
     ),
     {
       debug: process.env.NODE_ENV !== "production",
-      fonts: [],
     }
   );
 }
