@@ -8,6 +8,8 @@ type P = {
   };
 };
 
+export const runtime = "edge";
+
 export function GET(_request: NextRequest, { params = {} }: P) {
   const post = allPosts.find(findPost(params.slug));
 
