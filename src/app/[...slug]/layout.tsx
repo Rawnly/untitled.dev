@@ -22,7 +22,7 @@ export async function generateMetadata({
   const { title, date, summary: description, image, slug } = post;
   const ogImage = image
     ? `/${image}`.replace(/\/\//g, "/")
-    : `/api/og?slug=${slug}`;
+    : `/api/og/${slug}`.replace(/\/\//g, "/");
 
   return {
     title,
