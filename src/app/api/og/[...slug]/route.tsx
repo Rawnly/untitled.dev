@@ -28,15 +28,27 @@ export function GET(_request: NextRequest, { params = {} }: P) {
           gap: 8,
         }}
       >
-        <b style={{ fontSize: 42, fontWeight: 600 }}>
-          {post?.title ?? "hello"}
-        </b>
-        <div style={{ fontSize: 24 }}>{post?.summary}</div>
+        <div
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+            flexDirection: "column",
+            display: "flex",
+            maxWidth: 1000,
+            margin: "0 auto",
+          }}
+        >
+          <b style={{ fontSize: 42, fontWeight: 600 }}>
+            {post?.title ?? "hello"}
+          </b>
+          <div style={{ fontSize: 24 }}>{post?.summary}</div>
+        </div>
 
         <div
           style={{
-            left: 25,
-            bottom: 25,
+            left: 50,
+            bottom: 50,
             position: "absolute",
             display: "flex",
             gap: 16,

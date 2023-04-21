@@ -18,7 +18,7 @@ export default function PostPage({
   const post = allPosts.find(findPost(params.slug));
 
   if (!post) {
-    console.log("Post not found");
+    console.log("Post not found", params.slug);
     return notFound();
   }
 

@@ -3,8 +3,9 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
-  title: "TIL | by Federico Vitale",
-  description: "Today I learned...",
+  title: "untitled.dev",
+  description: "A collection of snippets and notes",
+  metadataBase: new URL("https://untitled.dev"),
 };
 
 export default function RootLayout({
@@ -33,7 +34,8 @@ export default function RootLayout({
               ))}
             </div>
             <p className="mb-10 text-xs leading-5 text-center text-gray-500">
-              &copy; 2023 Federico Vitale. All rights reserved.
+              &copy; {new Date().getFullYear()} Federico Vitale. All rights
+              reserved.
             </p>
             <nav
               className="-mt-6 sm:flex sm:justify-center sm:space-x-12 columns-2"
