@@ -17,7 +17,7 @@ export function GET(_request: NextRequest, { params = {} }: P) {
     (
       <div
         style={{
-          background: "#1d1d1d",
+          background: "#151718",
           color: "white",
           width: "100%",
           height: "100%",
