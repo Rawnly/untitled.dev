@@ -48,7 +48,7 @@ export function GET(
               height: 100,
               borderRadius: "100%",
               background: "currentColor",
-              backgroundImage: "url(https://unavatar.io/twitter/fedevitaledev)",
+              backgroundImage: "url(https://unavatar.io/github/rawnly)",
               backgroundSize: "100% 100%",
               border: "2px solid currentColor",
             }}
