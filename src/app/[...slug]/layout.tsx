@@ -88,11 +88,11 @@ export default function Layout(p: any) {
           {post.origin && (
             <div className="flex flex-col gap-4 mt-4">
               <hr className="my-0 opacity-50" />
-              <p className="flex inline-flex gap-1 text-sm opacity-75 transition-all hover:opacity-100">
+              <p className="inline-flex gap-1 text-sm opacity-75 transition-all hover:opacity-100">
                 Originally posted{" "}
                 <Link
                   target="_blank"
-                  className="flex inline-flex gap-0 justify-start items-base"
+                  className="inline-flex gap-0 justify-start items-base"
                   href={post.origin}
                 >
                   here <ExternalLink className="h-2.5" />

@@ -6,7 +6,7 @@ import * as mdxComponents from "@/components/mdx";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
-    slug: post.slug,
+    slug: post.slug.split("/"),
   }));
 }
 
