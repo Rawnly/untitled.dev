@@ -63,9 +63,6 @@ export function GET(_request: NextRequest, { params = {} }: P) {
           </ul>
         </div>
       </div>
-    ),
-    {
-      debug: process.env.NODE_ENV !== "production",
-    }
+    )
   );
 }
