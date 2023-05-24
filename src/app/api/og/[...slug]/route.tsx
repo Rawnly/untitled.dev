@@ -1,4 +1,4 @@
-import { findPost } from "@/app/[...slug]/utils";
+import { findPost } from "@/app/(posts)/[...slug]/utils";
 import { allPosts } from "contentlayer/generated";
 import { NextRequest, ImageResponse } from "next/server";
 
