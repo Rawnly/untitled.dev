@@ -1,8 +1,6 @@
 import { allPosts } from "contentlayer/generated";
 import PostsList from "./PostsList";
 import Link from "next/link";
-import { Badge } from "@/components/Badge";
-import { X } from "lucide-react";
 import SearchTag from "./SearchTag";
 
 export default async function Page({ params, searchParams }: any) {
