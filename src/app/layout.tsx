@@ -1,6 +1,8 @@
 import Link from "next/link";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { headers } from "next/headers";
+import PreviewBadge from "@/components/PreviewBadge";
 
 export const metadata = {
   title: "untitled.dev",
@@ -13,11 +15,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const isPreview = headers().has("x-preview");
+  const isDev = headers().has("x-dev");
+
   return (
     <html lang="en">
       <body className="w-screen min-h-screen rx-bg-neutral-1 rx-text-neutral-11">
         <div className="px-2 mx-auto max-w-6xl min-h-screen text-base sm:px-4">
           {children}
+          {(isDev || isPreview) && <PreviewBadge />}
         </div>
         <footer>
           <div className="overflow-hidden py-10 px-6 mx-auto max-w-7xl sm:py-8 lg:px-8">
