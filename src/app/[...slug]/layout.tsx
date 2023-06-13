@@ -28,6 +28,9 @@ export async function generateMetadata({
     title,
     description,
     keywords: post.tagsList,
+    alternates: {
+      canonical: post.origin,
+    },
     openGraph: {
       title,
       description,
